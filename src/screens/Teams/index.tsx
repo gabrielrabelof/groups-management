@@ -69,6 +69,11 @@ export function Teams() {
         )}
       />
 
+      <Button
+        title="Remove team"
+        type="SECONDARY"
+      />
+
     </Container>
   )
 }

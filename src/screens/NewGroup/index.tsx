@@ -31,7 +31,6 @@ export function NewGroup() {
         <Button 
           title="Create"
           style={{marginTop: 20}}
-          activeOpacity={0.7}
         />
 
       </Content>

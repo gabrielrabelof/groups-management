@@ -40,7 +40,6 @@ export function Groups() {
 
       <Button
         title="Create new team"
-        activeOpacity={0.7}
       />
     </Container>
   )
