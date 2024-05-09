@@ -7,6 +7,7 @@ import theme from "src/theme";
 
 import { Groups } from "@screens/Groups";
 import { NewGroup } from "@screens/NewGroup";
+import { Teams } from "@screens/Teams";
 
 import { Loading } from "@components/Loading";
 
@@ -17,7 +18,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-        { fontsLoaded ? <NewGroup /> : <Loading /> }
+        { fontsLoaded ? <Teams /> : <Loading /> }
       <StatusBar 
         barStyle="light-content"
         backgroundColor="transparent"
