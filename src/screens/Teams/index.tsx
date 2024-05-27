@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FlatList } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
 import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
 
@@ -12,10 +13,18 @@ import { ButtonIcon } from "@components/ButtonIcon";
 import { Filter } from "@components/Filter";
 import { Button } from "@components/Button";
 import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
+
+type RouteParams = {
+  group: string
+}
 
 export function Teams() {
   const [team, setTeam] = useState("Team A")
-  const [players, setPlayers] = useState<string[]>(["Player 1", "Player 2"])
+  const [players, setPlayers] = useState<string[]>([])
+
+  const route = useRoute()
+  const { group } = route.params as RouteParams
 
   const { COLORS } = useTheme()
 
@@ -24,7 +33,7 @@ export function Teams() {
       <Header showBackButton /> 
 
       <Highlight 
-        title="Team Name"
+        title={group}
         subtitle="Add the guys and separate the teams"
       />
 
@@ -32,6 +41,7 @@ export function Teams() {
         <Input
           placeholder="Participant name"
           placeholderTextColor={COLORS.GRAY_300}
+          autoCorrect={false}
         />
 
         <ButtonIcon 
@@ -55,7 +65,7 @@ export function Teams() {
         />
 
         <NumberOfPlayers>
-          2
+          {players.length}
         </NumberOfPlayers>
       </HeaderList>
 
@@ -67,6 +77,12 @@ export function Teams() {
             name={item}
           />
         )}
+        contentContainerStyle={players.length === 0 && { flex: 1 }}
+        ListEmptyComponent={
+          <ListEmpty
+            message="There are no people on this team."
+          />
+        }
       />
 
       <Button

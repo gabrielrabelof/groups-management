@@ -5,9 +5,7 @@ import { ThemeProvider } from "styled-components/native";
 
 import theme from "src/theme";
 
-import { Groups } from "@screens/Groups";
-import { NewGroup } from "@screens/NewGroup";
-import { Teams } from "@screens/Teams";
+import { Routes } from "src/routes";
 
 import { Loading } from "@components/Loading";
 
@@ -18,7 +16,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-        { fontsLoaded ? <Teams /> : <Loading /> }
+        { fontsLoaded ? <Routes /> : <Loading /> }
       <StatusBar 
         barStyle="light-content"
         backgroundColor="transparent"
